@@ -7,6 +7,15 @@ For the time being, the app will only be available in German. The reason why I t
 - ```expo start``` or ```expo start --tunnel```
 - For seeing it in the browser: ```press w``` after expo CLI started
 
+### Packages used
+- expo
+- react
+- react-native
+- react-native-web
+- react-native-elements
+- uuid
+- ...
+
 ### Screenshots
 <img src="https://raw.githubusercontent.com/bennymeier/react-native-drink-game/master/screenshot_home.png" alt="Home Screen" width="200" />
 <img src="https://raw.githubusercontent.com/bennymeier/react-native-drink-game/master/screenshot_categories.png" alt="Category Screen" width="200" />
