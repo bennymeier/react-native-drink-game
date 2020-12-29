@@ -29,7 +29,7 @@ const Game = (props) => {
 
   return (
     <View>
-      <Text>{cards.length}</Text>
+      {/* <Text>{cards.length}</Text> */}
       {!!currentCard && (
         <Card
           {...currentCard}

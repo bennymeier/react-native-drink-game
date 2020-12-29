@@ -37,6 +37,11 @@ const App = () => {
     setGameStart(!startGame);
   };
 
+  const handleDelete = (id) => {
+    const filterPlayers = players.filter((player) => player.id !== id);
+    setPlayers(filterPlayers);
+  };
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -44,7 +49,7 @@ const App = () => {
         <ScrollView>
           <View>
             <Text style={styles.heading}>Trink App</Text>
-            <Players players={players} />
+            <Players players={players} onPress={handleDelete} />
           </View>
           <View style={styles.defaultMargin}>
             <Input

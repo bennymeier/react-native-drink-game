@@ -8,7 +8,11 @@ const Players = (props) => {
       <View>
         {players.map((player) => {
           return (
-            <Button key={player.id} onPress={onPress} title={player.title} />
+            <Button
+              key={player.id}
+              onPress={() => onPress(player.id)}
+              title={player.title}
+            />
           );
         })}
       </View>
