@@ -62,6 +62,7 @@ const App = () => {
               onSubmitEditing={addNewPlayer}
             />
             <Button
+              titleStyle={btnStyle}
               onPress={handleGameStart}
               title="Spiel starten!"
               disabled={players.length < 2}
@@ -73,7 +74,10 @@ const App = () => {
     </>
   );
 };
-
+const btnStyle = {
+  fontSize: 17,
+  fontWeight: 'bold',
+};
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
