@@ -5,18 +5,16 @@ import {
   ScrollView,
   View,
   Text,
-  TextInput,
   StatusBar,
 } from 'react-native';
-
 import { Input, Button } from 'react-native-elements';
-
 import Players from './components/Players';
+import Game from './components/Game';
 
 const App = () => {
   const [players, setPlayers] = useState([]);
   const [newPlayer, setNewPlayer] = useState([]);
-  const [startGame, setGameStart] = useState(false);
+  const [startGame, setGameStart] = useState(true);
 
   const addNewPlayer = () => {
     // TODO: Create unique ID!

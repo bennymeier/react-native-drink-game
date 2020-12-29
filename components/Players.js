@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Button } from 'react-native';
+import { View, Button } from 'react-native';
 
 const Players = (props) => {
   const { players, onPress } = props;
