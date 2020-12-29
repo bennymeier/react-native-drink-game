@@ -7,10 +7,11 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { Button } from 'react-native-elements';
 import Players from './components/Players';
 import Game from './components/Game';
 import { v4 as uuidv4 } from 'uuid';
+import Categories from './components/Categories';
 
 const App = () => {
   const [players, setPlayers] = useState([
@@ -48,48 +49,64 @@ const App = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView>
-          <View>
-            <Text style={styles.heading}>Trink App</Text>
-            <Players players={players} onPress={handleDelete} />
+      <SafeAreaView style={styles.scrollAreaView}>
+        <ScrollView style={styles.scrollView}>
+          <View testID="HEADER">
+            <Text style={styles.headingStyle}>Trink App 🥃</Text>
+            <Categories />
           </View>
-          <View style={styles.defaultMargin}>
-            <Input
-              value={newPlayer}
-              onChangeText={handleChange}
-              placeholder="Spielername"
-              onSubmitEditing={addNewPlayer}
+          <View testID="MAIN">
+            <Players
+              players={players}
+              onPress={handleDelete}
+              onAddNewPlayer={addNewPlayer}
+              currentPlayerValue={newPlayer}
+              onChangeNewPlayer={handleChange}
             />
+            {startGame && <Game handleGameStart={handleGameStart} />}
+          </View>
+          <View testID="FOOTER" style={styles.mainContainer}>
             <Button
               titleStyle={btnStyle}
               onPress={handleGameStart}
               title="Spiel starten!"
               disabled={players.length < 2}
             />
-            {startGame && <Game handleGameStart={handleGameStart} />}
           </View>
         </ScrollView>
       </SafeAreaView>
     </>
   );
 };
+
 const btnStyle = {
   fontSize: 17,
   fontWeight: 'bold',
 };
+
 const styles = StyleSheet.create({
+  scrollAreaView: {
+    backgroundColor: '#9400D3',
+  },
+  scrollView: {
+    marginVertical: 25,
+    marginHorizontal: 15,
+  },
   container: {
     justifyContent: 'center',
-    marginHorizontal: 16,
+    marginVertical: 25,
+    marginHorizontal: 18,
   },
-  heading: {
-    fontSize: 25,
-    fontWeight: 'bold',
+  mainContainer: {
+    justifyContent: 'center',
+    margin: 15,
+    maxHeight: 400,
+  },
+  headingStyle: {
+    fontSize: 28,
     textAlign: 'center',
-  },
-  defaultMargin: {
-    margin: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

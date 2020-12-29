@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import DATA from '../data';
+import { DATA } from '../data';
 import Card from './Card';
 import { randomNumber } from '../utils';
 

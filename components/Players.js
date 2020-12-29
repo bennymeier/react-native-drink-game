@@ -1,31 +1,73 @@
 import React from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 
 const Players = (props) => {
-  const { players, onPress } = props;
+  const {
+    players = [],
+    onPress,
+    onAddNewPlayer,
+    onChangeNewPlayer,
+    currentPlayerValue,
+  } = props;
+  console.log(players);
   return (
-    <View style={styles.container}>
-      {players.map((player) => {
-        return (
-          <View style={styles.playerContainer} key={player.id}>
-            <Text style={styles.player} numberOfLines={1}>
-              {player.title}
-            </Text>
-            <Button
-              onPress={() => onPress(player.id)}
-              title="Spieler löschen"
-            />
-          </View>
-        );
-      })}
+    <View>
+      <View style={styles.headerContainer}>
+        <Text style={[styles.text, styles.heading, styles.white]}>
+          Spielerliste
+        </Text>
+      </View>
+      <View style={styles.playersContainer}>
+        {players.map((player, index) => {
+          const borderStyle = () => {
+            if (players.length - 1 !== index) {
+              return styles.borderBottom;
+            }
+          };
+          return (
+            <View
+              style={[styles.playerContainer, borderStyle()]}
+              key={player.id}
+            >
+              <Text style={[styles.text, styles.black]} numberOfLines={1}>
+                {player.title}
+              </Text>
+              <Text
+                style={[styles.btn, styles.white]}
+                onPress={() => onPress(player.id)}
+              >
+                ―
+              </Text>
+            </View>
+          );
+        })}
+      </View>
+      <View style={styles.addPlayerContainer}>
+        <TextInput
+          placeholderTextColor="white"
+          style={styles.newPlayerInput}
+          autoCorrect={false}
+          value={currentPlayerValue}
+          onChangeText={onChangeNewPlayer}
+          placeholder="Spielername"
+          onSubmitEditing={onAddNewPlayer}
+        />
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    margin: 15,
+  headerContainer: {
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    borderTopWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#4B0082',
+    backgroundColor: '#4B0082',
+  },
+  playersContainer: {
+    backgroundColor: 'white',
   },
   playerContainer: {
     marginVertical: 5,
@@ -33,9 +75,51 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
-  player: {
+  addPlayerContainer: {
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    borderBottomWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#4B0082',
+    backgroundColor: '#4B0082',
+  },
+  borderBottom: {
+    borderBottomColor: '#8080805e',
+    borderBottomWidth: 3,
+    borderStyle: 'solid',
+  },
+  heading: {
+    fontSize: 28,
+  },
+  text: {
     fontWeight: 'bold',
     fontSize: 17,
+    padding: 15,
+  },
+  newPlayerInput: {
+    height: 50,
+    padding: 10,
+    color: 'white',
+    fontSize: 17,
+  },
+  black: {
+    color: 'black',
+  },
+  white: {
+    color: 'white',
+  },
+  btn: {
+    borderRadius: 50,
+    backgroundColor: 'red',
+    fontSize: 20,
+    height: 35,
+    width: 35,
+    textAlign: 'center',
+    position: 'relative',
+    padding: 0,
+    fontWeight: 'bold',
+    marginRight: 15,
+    marginTop: 7.5,
   },
 });
 
