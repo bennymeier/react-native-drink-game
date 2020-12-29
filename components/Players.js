@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
 
 const Players = (props) => {
   const {
@@ -17,7 +17,7 @@ const Players = (props) => {
           Spielerliste
         </Text>
       </View>
-      <View style={styles.playersContainer}>
+      <ScrollView style={styles.playersContainer}>
         {players.map((player, index) => {
           const borderStyle = () => {
             if (players.length - 1 !== index) {
@@ -41,7 +41,7 @@ const Players = (props) => {
             </View>
           );
         })}
-      </View>
+      </ScrollView>
       <View style={styles.addPlayerContainer}>
         <TextInput
           placeholderTextColor="white"
@@ -49,7 +49,7 @@ const Players = (props) => {
           autoCorrect={false}
           value={currentPlayerValue}
           onChangeText={onChangeNewPlayer}
-          placeholder="Spielername"
+          placeholder="Spieler hinzufügen"
           onSubmitEditing={onAddNewPlayer}
         />
       </View>
@@ -66,9 +66,7 @@ const styles = StyleSheet.create({
     borderColor: '#4B0082',
     backgroundColor: '#4B0082',
   },
-  playersContainer: {
-    backgroundColor: 'white',
-  },
+  playersContainer: { maxHeight: '60%', backgroundColor: 'white' },
   playerContainer: {
     marginVertical: 5,
     display: 'flex',
@@ -109,13 +107,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   btn: {
-    borderRadius: 50,
+    borderRadius: 17.5,
     backgroundColor: 'red',
     fontSize: 20,
     height: 35,
     width: 35,
     textAlign: 'center',
-    position: 'relative',
     padding: 0,
     fontWeight: 'bold',
     marginRight: 15,
