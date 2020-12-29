@@ -11,7 +11,7 @@ const Card = (props) => {
   return (
     <Overlay
       isVisible={true}
-      overlayStyle={styles.overlay}
+      overlayStyle={overlayStyle}
       onBackdropPress={handleGameStart}
     >
       <View>
@@ -19,7 +19,7 @@ const Card = (props) => {
         <Text style={styles.text}>{text}</Text>
         <Button onPress={() => onPress(id)} title="Weiter!" />
         <Button
-          buttonStyle={styles.cancelBtn}
+          buttonStyle={cancelBtnStyle}
           onPress={handleGameStart}
           title="Abbrechen"
         />
@@ -28,6 +28,8 @@ const Card = (props) => {
   );
 };
 
+const cancelBtnStyle = { marginTop: 15, backgroundColor: 'red' };
+const overlayStyle = { padding: 15, margin: 15 };
 const styles = StyleSheet.create({
   heading: {
     textAlign: 'center',
@@ -39,14 +41,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     marginVertical: 35,
     textAlign: 'center',
-  },
-  overlay: {
-    padding: 15,
-    margin: 15,
-  },
-  cancelBtn: {
-    marginTop: 15,
-    backgroundColor: 'red',
   },
 });
 
