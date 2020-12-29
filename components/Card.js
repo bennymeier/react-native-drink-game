@@ -9,18 +9,16 @@ const Card = (props) => {
   const text = desc(shots);
 
   return (
-    <View>
-      <Overlay isVisible={true} style={styles.overlay}>
-        <Text style={styles.heading}>Hoch die Gläser! 🍻</Text>
-        <Text style={styles.text}>{text}</Text>
-        <Button onPress={() => onPress(id)} title="Weiter!" />
-        <Button
-          buttonStyle={styles.cancelBtn}
-          onPress={handleGameStart}
-          title="Abbrechen"
-        />
-      </Overlay>
-    </View>
+    <Overlay isVisible={true} style={styles.overlay}>
+      <Text style={styles.heading}>Hoch die Gläser! 🍻</Text>
+      <Text style={styles.text}>{text}</Text>
+      <Button onPress={() => onPress(id)} title="Weiter!" />
+      <Button
+        buttonStyle={styles.cancelBtn}
+        onPress={handleGameStart}
+        title="Abbrechen"
+      />
+    </Overlay>
   );
 };
 
@@ -37,6 +35,7 @@ const styles = StyleSheet.create({
   },
   overlay: {
     padding: 15,
+    margin: 15,
   },
   cancelBtn: {
     marginTop: 15,

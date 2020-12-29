@@ -1,23 +1,42 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Text, StyleSheet } from 'react-native';
 
 const Players = (props) => {
   const { players, onPress } = props;
   return (
-    <>
-      <View>
-        {players.map((player) => {
-          return (
+    <View style={styles.container}>
+      {players.map((player) => {
+        return (
+          <View style={styles.playerContainer} key={player.id}>
+            <Text style={styles.player} numberOfLines={1}>
+              {player.title}
+            </Text>
             <Button
-              key={player.id}
               onPress={() => onPress(player.id)}
-              title={player.title}
+              title="Spieler löschen"
             />
-          );
-        })}
-      </View>
-    </>
+          </View>
+        );
+      })}
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    margin: 15,
+  },
+  playerContainer: {
+    marginVertical: 5,
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  player: {
+    fontWeight: 'bold',
+    fontSize: 17,
+  },
+});
 
 export default Players;

@@ -10,6 +10,7 @@ import {
 import { Input, Button } from 'react-native-elements';
 import Players from './components/Players';
 import Game from './components/Game';
+import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
   const [players, setPlayers] = useState([]);
@@ -17,9 +18,8 @@ const App = () => {
   const [startGame, setGameStart] = useState(false);
 
   const addNewPlayer = () => {
-    // TODO: Create unique ID!
     const player = {
-      id: newPlayer,
+      id: uuidv4(),
       title: newPlayer,
     };
     setPlayers([...players, player]);
@@ -58,7 +58,11 @@ const App = () => {
               placeholder="Spielername"
               onSubmitEditing={addNewPlayer}
             />
-            <Button onPress={handleGameStart} title="Spiel starten!" />
+            <Button
+              onPress={handleGameStart}
+              title="Spiel starten!"
+              disabled={players.length < 2}
+            />
             {startGame && <Game handleGameStart={handleGameStart} />}
           </View>
         </ScrollView>
