@@ -18,7 +18,7 @@ const DATA = [
     desc: (shots) =>
       `Der Spieler mit dem wenigsten Geld in der Tasche trinkt ${shots} Schluck${
         shots > 1 ? 'e' : ''
-      }. Zeigst du es nicht oder hast keinen dabei, trinkst du ${
+      }. Zeigst du es nicht oder hast keins dabei, trinkst du ${
         shots + 2
       } Schlucke.`,
   },

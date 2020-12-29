@@ -16,11 +16,13 @@ const Game = (props) => {
 
   const nextCard = (id) => {
     // If no cards anymore, close overlay, set current card to undefined
+    console.log('Cards left: ', cards.length);
     if (!cards.length) {
       handleGameStart();
       setCard();
     } else {
       const filterCards = cards.filter((card) => card.id !== id);
+      console.log('Filtered: ', filterCards);
       setCards(filterCards);
       const randomNr = randomNumber(0, cards.length - 1);
       setCard(cards[randomNr]);

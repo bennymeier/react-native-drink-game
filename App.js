@@ -13,7 +13,10 @@ import Game from './components/Game';
 import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState([
+    { id: 1, title: 'Benny' },
+    { id: 2, title: 'Axel' },
+  ]);
   const [newPlayer, setNewPlayer] = useState('');
   const [startGame, setGameStart] = useState(false);
 
