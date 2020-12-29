@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import DATA from '../data';
 import Card from './Card';
 import { randomNumber } from '../utils';
 
-const Game = () => {
+const Game = (props) => {
+  const { handleGameStart } = props;
   const [cards, setCards] = useState([]);
   const [currentCard, setCard] = useState();
   useEffect(() => {
@@ -14,14 +15,29 @@ const Game = () => {
   }, []);
 
   const nextCard = (id) => {
-    const filterCards = cards.filter((card) => card.id !== id);
-    setCards(filterCards);
-    const randomNr = randomNumber(0, cards.length - 1);
-    setCard(cards[randomNr]);
+    // If no cards anymore, close overlay, set current card to undefined
+    if (!cards.length) {
+      handleGameStart();
+      setCard();
+    } else {
+      const filterCards = cards.filter((card) => card.id !== id);
+      setCards(filterCards);
+      const randomNr = randomNumber(0, cards.length - 1);
+      setCard(cards[randomNr]);
+    }
   };
 
   return (
-    <View>{!!currentCard && <Card {...cards[0]} onPress={nextCard} />}</View>
+    <View>
+      <Text>{cards.length}</Text>
+      {!!currentCard && (
+        <Card
+          {...currentCard}
+          onPress={nextCard}
+          handleGameStart={handleGameStart}
+        />
+      )}
+    </View>
   );
 };
 

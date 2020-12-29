@@ -4,7 +4,7 @@ import { Overlay, Button } from 'react-native-elements';
 import { randomNumber } from '../utils';
 
 const Card = (props) => {
-  const { id, desc, onPress } = props;
+  const { id, desc, onPress, handleGameStart } = props;
   const shots = randomNumber();
   const text = desc(shots);
 
@@ -14,6 +14,11 @@ const Card = (props) => {
         <Text style={styles.heading}>Hoch die Gläser! 🍻</Text>
         <Text style={styles.text}>{text}</Text>
         <Button onPress={() => onPress(id)} title="Weiter!" />
+        <Button
+          buttonStyle={styles.cancelBtn}
+          onPress={handleGameStart}
+          title="Abbrechen"
+        />
       </Overlay>
     </View>
   );
@@ -32,6 +37,10 @@ const styles = StyleSheet.create({
   },
   overlay: {
     padding: 15,
+  },
+  cancelBtn: {
+    marginTop: 15,
+    backgroundColor: 'red',
   },
 });
 

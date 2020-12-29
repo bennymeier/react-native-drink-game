@@ -13,8 +13,8 @@ import Game from './components/Game';
 
 const App = () => {
   const [players, setPlayers] = useState([]);
-  const [newPlayer, setNewPlayer] = useState([]);
-  const [startGame, setGameStart] = useState(true);
+  const [newPlayer, setNewPlayer] = useState('');
+  const [startGame, setGameStart] = useState(false);
 
   const addNewPlayer = () => {
     // TODO: Create unique ID!
@@ -31,7 +31,10 @@ const App = () => {
   };
 
   const handleGameStart = () => {
-    setGameStart(true);
+    if (newPlayer) {
+      addNewPlayer();
+    }
+    setGameStart(!startGame);
   };
 
   return (
@@ -51,7 +54,7 @@ const App = () => {
               onSubmitEditing={addNewPlayer}
             />
             <Button onPress={handleGameStart} title="Spiel starten!" />
-            {startGame && <Game />}
+            {startGame && <Game handleGameStart={handleGameStart} />}
           </View>
         </ScrollView>
       </SafeAreaView>

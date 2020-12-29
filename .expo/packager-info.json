@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19001,
-  "packagerPort": 19001,
+  "expoServerPort": 19004,
+  "packagerPort": 19004,
   "expoServerNgrokUrl": "https://ps-9ba.bennymeier.reactnativedrinkgame.exp.direct",
   "packagerNgrokUrl": "https://packager.ps-9ba.bennymeier.reactnativedrinkgame.exp.direct",
-  "ngrokPid": 16476,
+  "ngrokPid": 4212,
   "webpackServerPort": null,
   "packagerPid": null
 }
